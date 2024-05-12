@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora Mágica</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+<style>
+body {
+    background-size: cover; 
+ background-image: url('fondo.gif');
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f7f7f7;
+  margin: 0;
+}
+
+.calculator {
+  width: 300px;
+  border: 2px solid #000000;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #0c460c;
+}
+
+.calculator input[type="text"] {
+  width: calc(100% - 20px); /* Ajustamos el ancho del input */
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 20px;
+  text-align: right;
+}
+
+.calculator button {
+  width: 60px;
+  height: 60px;
+  margin: 5px;
+  font-size: 24px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.calculator button:hover {
+  background-color: #313030;
+}
+
+.animate {
+  animation: move 0.1s ease;
+}
+
+@keyframes move {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+  100% { transform: translateY(0); }
+}
+
+table {
+    color: aliceblue;
+  margin-left: 40px;
+  margin-top: 10px;
+  width: 30%;
+  border-collapse: collapse;
+  background-color: #666518;
+}
+
+table, th, td {
+  border: 1px solid #ccc;
+}
+
+th, td {
+  padding: 5px;
+  text-align: left;
+}
+</style>
+</head>
+<body>
+
+<div class="calculator">
+  <input type="text" id="display" disabled>
+  <div>
+    <button onclick="clearDisplay()">🧹</button>
+    <button onclick="appendToDisplay('7')" class="numberBtn">🐶</button>
+    <button onclick="appendToDisplay('8')" class="numberBtn">🐱</button>
+    <button onclick="appendToDisplay('9')" class="numberBtn">🐉</button>
+    <button onclick="appendToDisplay('+')" class="operatorBtn">+</button>
+  </div>
+  <div>
+    <button onclick="appendToDisplay('4')" class="numberBtn">🦛</button>
+    <button onclick="appendToDisplay('5')" class="numberBtn">🐟</button>
+    <button onclick="appendToDisplay('6')" class="numberBtn">🦦</button>
+    <button onclick="appendToDisplay('-')" class="operatorBtn">-</button>
+  </div>
+  <div>
+    <button onclick="appendToDisplay('1')" class="numberBtn">🦢</button>
+    <button onclick="appendToDisplay('2')" class="numberBtn">🕊️</button>
+    <button onclick="appendToDisplay('3')" class="numberBtn">🐛</button>
+    <button onclick="appendToDisplay('*')" class="operatorBtn">*</button>
+  </div>
+  <div>
+    <button onclick="appendToDisplay('0')" class="numberBtn">🦍</button>
+    <button onclick="appendToDisplay('.')">🐸</button>
+    <button onclick="calculate()" class="equalBtn">=</button>
+    <button onclick="appendToDisplay('/')" class="operatorBtn">/</button>
+  </div>
+</div>
+
+<table>
+  <tr>
+    <th>Número</th>
+    <th>Animal</th>
+    <th>Emoji</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Ganzo</td>
+    <td>🦢</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>Paloma</td>
+    <td>🕊️</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>Gusano</td>
+    <td>🐛</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>Hipopótamo</td>
+    <td>🦛</td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>Pez</td>
+    <td>🐟</td>
+  </tr>
+  <tr>
+    <td>6</td>
+    <td>Nutria</td>
+    <td>🦦</td>
+  </tr>
+  <tr>
+    <td>7</td>
+    <td>Perro</td>
+    <td>🐶</td>
+  </tr>
+  <tr>
+    <td>8</td>
+    <td>Gato</td>
+    <td>🐱</td>
+  </tr>
+  <tr>
+    <td>9</td>
+    <td>Dragón</td>
+    <td>🐉</td>
+  </tr>
+  <tr>
+    <td>0</td>
+    <td>Gorilla</td>
+    <td>🦍</td>
+  </tr>
+</table>
+
+<script>
+function appendToDisplay(value) {
+  document.getElementById('display').value += value;
+  document.getElementById('display').classList.add('animate');
+  setTimeout(function() {
+    document.getElementById('display').classList.remove('animate');
+  }, 100);
+}
+
+function clearDisplay() {
+  document.getElementById('display').value = '';
+}
+
+function calculate() {
+  try {
+    const result = eval(document.getElementById('display').value);
+    document.getElementById('display').value = result;
+    document.getElementById('display').classList.add('animate');
+    setTimeout(function() {
+      document.getElementById('display').classList.remove('animate');
+    }, 100);
+  } catch (error) {
+    document.getElementById('display').value = 'Error';
+  }
+}
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
